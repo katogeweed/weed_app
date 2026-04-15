@@ -1,2 +1,21 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h2>保存したメモ一覧<h2>
+<ul>
+    <% @memos.each do |memo| %>
+        <li><%= memo.title %>:<%= memo.content %></li>
+    <% end %>
+</ul>
+<hr>
+<h3>フォーム</h3>
+<%= form_with model:Memo.new, url: "/welcome/create" do |f|%>
+    <div>
+        <%= f.label :title, "タイトル"%><br>
+        <%= f.text_field :title %>
+    </div>
+    <div>
+        <%= f.label :content, " 内容"%><br>
+        <%= f.text_area :content %>
+    </div>
+    <%= f.submit "保存する" %>
+<% end %>
+
+
