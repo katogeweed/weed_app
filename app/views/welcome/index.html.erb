@@ -1,4 +1,11 @@
-<h2>ようこそ、雑草の世界へ！<h2>
+<% if user_signed_in? %>
+    <p>ようこそ、<%= current_user.name%>あなたの雑草の人生が始まります</p>
+    <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete } %>
+<% else %>
+    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to "ログイン", new_user_session_path %>
+<% end %>
+
 
 
 
